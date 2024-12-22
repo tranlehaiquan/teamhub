@@ -24,15 +24,16 @@
     "@apollo/server": "^4.11.2",
     "@nestjs/apollo": "^12.2.2",
     "@nestjs/common": "^10.0.0",
+    "@nestjs/config": "^3.3.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/graphql": "^12.2.2",
     "@nestjs/platform-express": "^10.0.0",
+    "@workspace/drizzle-module": "workspace:*",
     "drizzle-orm": "^0.38.2",
     "graphql": "^16.10.0",
     "pg": "^8.13.1",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.1",
-    "@workspace/drizzle-module": "workspace:*"
+    "rxjs": "^7.8.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
