@@ -1,0 +1,42 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserAuth {
+  """User id"""
+  id: String!
+
+  """User name"""
+  name: String!
+
+  """User email"""
+  email: String!
+}
+
+type Query {
+  getCurrentUser: UserAuth!
+}
+
+type Mutation {
+  signUp(createAuthInput: CreateAuthInput!): UserAuth!
+  signIn(createAuthInput: UserSignIn!): UserAuth!
+}
+
+input CreateAuthInput {
+  """User name"""
+  name: String!
+
+  """User email"""
+  email: String!
+
+  """User password"""
+  password: String!
+}
+
+input UserSignIn {
+  """User email"""
+  email: String!
+
+  """User password"""
+  password: String!
+}
