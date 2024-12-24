@@ -5,7 +5,6 @@ import { DrizzleModule } from '@workspace/drizzle-module';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { UserModule } from 'src/user/user.module';
-import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
@@ -19,7 +18,6 @@ import { PassportModule } from '@nestjs/passport';
       databaseURL: process.env.DATABASE_URL,
     }),
     UserModule,
-    PassportModule,
   ],
   providers: [AuthResolver, AuthService],
 })
