@@ -25,9 +25,12 @@ export class AuthService {
       ...createAuthInput,
       password: hashedPassword,
     });
+    const user = results[0];
 
     return {
-      ...results[0],
+      id: user.id,
+      email: user.email,
+      name: user.name,
     };
   }
 
@@ -49,7 +52,9 @@ export class AuthService {
 
     const payload = {
       sub: user.id,
-      ...user,
+      id: user.id,
+      email: user.email,
+      name: user.name,
     };
 
     return {
