@@ -13,13 +13,18 @@ type UserAuth {
   email: String!
 }
 
+type AuthToken {
+  """JWT token"""
+  token: String!
+}
+
 type Query {
   getCurrentUser: UserAuth!
 }
 
 type Mutation {
   signUp(createAuthInput: CreateAuthInput!): UserAuth!
-  signIn(createAuthInput: UserSignIn!): UserAuth!
+  signIn(userSignIn: UserSignIn!): AuthToken!
 }
 
 input CreateAuthInput {

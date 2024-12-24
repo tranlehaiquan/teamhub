@@ -1,10 +1,4 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
-
-@ObjectType()
-export class Auth {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
-}
+import { ObjectType, Field } from '@nestjs/graphql';
 
 @ObjectType()
 export class UserAuth {
@@ -16,4 +10,10 @@ export class UserAuth {
 
   @Field(() => String, { description: 'User email' })
   email: string;
+}
+
+@ObjectType()
+export class AuthToken {
+  @Field(() => String, { description: 'JWT token' })
+  token: string;
 }

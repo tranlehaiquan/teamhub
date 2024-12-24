@@ -4,6 +4,7 @@ import { AuthResolver } from './auth.resolver';
 import { DrizzleModule } from '@workspace/drizzle-module';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
+import { UserModule } from 'src/user/user.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { JwtModule } from '@nestjs/jwt';
     DrizzleModule.register({
       databaseURL: process.env.DATABASE_URL,
     }),
+    UserModule,
   ],
   providers: [AuthResolver, AuthService],
 })
