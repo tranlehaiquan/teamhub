@@ -3,6 +3,7 @@ import { CreateAuthInput, UserSignIn } from './dto/create-auth.input';
 import { JwtService } from '@nestjs/jwt';
 import { hash, verify } from 'argon2';
 import { UserService } from 'src/user/user.service';
+import omit from 'lodash/omit';
 
 @Injectable()
 export class AuthService {
@@ -10,6 +11,22 @@ export class AuthService {
     private readonly JWTService: JwtService,
     private readonly UserService: UserService,
   ) {}
+
+  async validateUser(username: string, password: string) {
+    const users = await this.UserService.findUserByEmail(username);
+    const user = users[0];
+
+    if (!user) {
+      return null;
+    }
+
+    const isCorrectPWD = await verify(user.password, password);
+    if (!isCorrectPWD) {
+      return null;
+    }
+
+    return omit(user, 'password');
+  }
 
   async register(createAuthInput: CreateAuthInput) {
     const isUserExist = await this.UserService.findUserByEmail(

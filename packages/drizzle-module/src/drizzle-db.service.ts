@@ -18,8 +18,6 @@ export class DrizzleService implements OnModuleInit {
   }
 
   async onModuleInit() {
-    console.log('databaseURL', this.databaseURL);
     this.drizzleClient = drizzle(this.databaseURL);
-    console.log('Drizzle client connected to the database');
   }
 }

@@ -2,9 +2,9 @@ import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { AuthService } from './auth.service';
 import { AuthToken, UserAuth } from './entities/auth.entity';
 import { CreateAuthInput, UserSignIn } from './dto/create-auth.input';
-import { AuthGuard } from '../guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { UseGuards } from '@nestjs/common';
-import { CurrentUser } from 'src/decorators/user.decorator';
+import { CurrentUser } from './decorators/user.decorator';
 
 @Resolver('Auth')
 export class AuthResolver {
@@ -23,6 +23,7 @@ export class AuthResolver {
   @Query(() => UserAuth)
   @UseGuards(AuthGuard)
   whoAmI(@CurrentUser() user) {
+    console.log('user', user);
     return this.authService.getUserById(user.id);
   }
 }
