@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { CreateAuthInput, UserSignIn } from './dto/create-auth.input';
 import { JwtService } from '@nestjs/jwt';
 import { hash, verify } from 'argon2';
@@ -17,7 +17,7 @@ export class AuthService {
     );
 
     if (isUserExist.length > 0) {
-      throw new Error('User already exist');
+      throw new UnauthorizedException('User already exists');
     }
 
     const hashedPassword = await hash(createAuthInput.password);
@@ -38,15 +38,13 @@ export class AuthService {
     const user = users[0];
 
     if (!user) {
-      throw new Error('User not found');
+      throw new UnauthorizedException('Invalid email or password');
     }
-
-    console.log(user);
 
     const password = user.password;
     const isCorrectPWD = await verify(password, userSignIn.password);
     if (!isCorrectPWD) {
-      throw new Error('Invalid password');
+      throw new UnauthorizedException('Invalid email or password');
     }
 
     const payload = {
@@ -54,13 +52,14 @@ export class AuthService {
       ...user,
     };
 
-    // Generate JWT
     return {
       token: await this.JWTService.sign(payload),
     };
   }
 
-  async getCurrentUser() {
-    return 'current user';
+  async getUserById(userId: string) {
+    const users = await this.UserService.getUserById(userId);
+
+    return users[0];
   }
 }

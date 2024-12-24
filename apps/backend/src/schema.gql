@@ -19,7 +19,7 @@ type AuthToken {
 }
 
 type Query {
-  getCurrentUser: UserAuth!
+  whoAmI: UserAuth!
 }
 
 type Mutation {
