@@ -6,7 +6,8 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "database:push": "pnpm --filter \"@workspace/drizzle-module\" db:pull"
+    "database:push": "pnpm --filter \"@workspace/drizzle-module\" db:pull",
+    "updatePackages": "pnpm -r up"
   },
   "devDependencies": {
     "@workspace/eslint-config": "workspace:*",

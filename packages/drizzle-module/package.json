@@ -19,7 +19,7 @@
   "dependencies": {
     "@nestjs/common": "^10.4.15",
     "@workspace/typescript-config": "workspace:*",
-    "drizzle-orm": "^0.38.2",
+    "drizzle-orm": "^0.38.3",
     "pg": "^8.13.1",
     "typescript": "^5.7.2"
   },
