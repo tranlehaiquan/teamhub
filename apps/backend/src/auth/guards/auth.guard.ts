@@ -2,8 +2,9 @@ import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import { JwtService } from '@nestjs/jwt';
-import { IS_AUTH_OPTIONAL } from '../constants';
+import { IS_PUBLIC } from '../constants';
 
+// by default all routes are protected
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(
@@ -23,12 +24,12 @@ export class AuthGuard implements CanActivate {
 
       return !!decode;
     } catch {
-      const isOptional = this.reflector.getAllAndOverride<boolean>(
-        IS_AUTH_OPTIONAL,
-        [context.getHandler(), context.getClass()],
-      );
+      const isPublic = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC, [
+        context.getHandler(),
+        context.getClass(),
+      ]);
 
-      return !!isOptional;
+      return !!isPublic;
     }
   }
 }

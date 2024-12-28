@@ -1,7 +1,8 @@
-import { pgTable, unique, uuid, varchar, timestamp, foreignKey, jsonb } from "drizzle-orm/pg-core"
+import { pgTable, unique, uuid, varchar, timestamp, foreignKey, jsonb, pgEnum } from "drizzle-orm/pg-core"
 import { sql } from "drizzle-orm"
 
-
+export const roles = pgEnum("roles", ['user', 'admin'])
+export type UsersRole = (typeof roles.enumValues)[number];
 
 export const users = pgTable("users", {
 	id: uuid().defaultRandom().primaryKey().notNull(),
@@ -11,6 +12,7 @@ export const users = pgTable("users", {
 	updatedAt: timestamp("updated_at", { mode: 'string' }),
 	createdAt: timestamp("created_at", { mode: 'string' }).defaultNow().notNull(),
 	deletedAt: timestamp("deleted_at", { mode: 'string' }),
+	role: roles().default('user'),
 }, (table) => [
 	unique("users_email_unique").on(table.email),
 ]);

@@ -5,6 +5,9 @@ import { DrizzleModule } from '@workspace/drizzle-module';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { UserModule } from 'src/user/user.module';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from './guards/auth.guard';
+import { RolesGuard } from './guards/roles/roles.guard';
 
 @Module({
   imports: [
@@ -19,6 +22,17 @@ import { UserModule } from 'src/user/user.module';
     }),
     UserModule,
   ],
-  providers: [AuthResolver, AuthService],
+  providers: [
+    AuthResolver,
+    AuthService,
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
+    },
+  ],
 })
 export class AuthModule {}

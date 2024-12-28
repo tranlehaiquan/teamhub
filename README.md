@@ -30,6 +30,8 @@ To use the components in your app, import them from the `ui` package.
 import { Button } from "@workspace/ui/components/ui/button"
 ```
 
+## Flows
+
 ```mermaid
 sequenceDiagram
     participant A as User
@@ -45,4 +47,7 @@ sequenceDiagram
     B->>C: Call graphql signIn mutation
     C->>B: Return user JWT token
     B->>A: Set cookie with JWT token and redirect to home page
+
+    A->>B: Click logout button
+    B->>A: Remove cookie with JWT token and redirect to login page
 ```

@@ -1,10 +1,10 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 import { SetMetadata } from '@nestjs/common';
 import { GqlExecutionContext } from '@nestjs/graphql';
-import { IS_AUTH_OPTIONAL } from '../constants';
+import { IS_PUBLIC } from '../constants';
 
 // set metadata authenticate is optional
-export const AuthIsOptional = () => SetMetadata(IS_AUTH_OPTIONAL, true);
+export const AuthIsPublic = () => SetMetadata(IS_PUBLIC, true);
 
 export const CurrentUser = createParamDecorator(
   (data: unknown, ctx: ExecutionContext): { id: string } | undefined => {

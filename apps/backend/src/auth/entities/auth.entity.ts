@@ -10,6 +10,9 @@ export class UserAuth {
 
   @Field(() => String, { description: 'User email' })
   email: string;
+
+  @Field(() => String, { description: 'User role' })
+  role: string;
 }
 
 @ObjectType()

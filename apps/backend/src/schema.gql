@@ -11,6 +11,9 @@ type UserAuth {
 
   """User email"""
   email: String!
+
+  """User role"""
+  role: String!
 }
 
 type AuthToken {
@@ -20,6 +23,7 @@ type AuthToken {
 
 type Query {
   whoAmI: UserAuth!
+  onlyAdmin: UserAuth!
 }
 
 type Mutation {
