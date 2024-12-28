@@ -4,7 +4,6 @@ import { AuthToken, UserAuth } from './entities/auth.entity';
 import { CreateAuthInput, UserSignIn } from './dto/create-auth.input';
 import { AuthIsPublic, CurrentUser } from './decorators/user.decorator';
 import { Roles } from './decorators/roles.decorator';
-import { dbSchema } from '@workspace/drizzle-module';
 
 @Resolver('Auth')
 export class AuthResolver {

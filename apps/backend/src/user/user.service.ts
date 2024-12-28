@@ -10,7 +10,7 @@ export class UserService {
 
   createUser(input: CreateUserInput) {
     return this.drizzle.drizzleClient
-      .insert(dbSchema.users)
+      .insert(dbSchema.usersTable)
       .values(input)
       .returning();
   }
@@ -18,23 +18,23 @@ export class UserService {
   async findUserByEmail(email: string) {
     return await this.drizzle.drizzleClient
       .select()
-      .from(dbSchema.users)
-      .where(eq(dbSchema.users.email, email));
+      .from(dbSchema.usersTable)
+      .where(eq(dbSchema.usersTable.email, email));
   }
 
   // get user by id
   async getUserById(id: string) {
     return await this.drizzle.drizzleClient
       .select()
-      .from(dbSchema.users)
-      .where(eq(dbSchema.users.id, id));
+      .from(dbSchema.usersTable)
+      .where(eq(dbSchema.usersTable.id, id));
   }
 
   async updateUserById(id: string, input: UpdateUserInput) {
     return await this.drizzle.drizzleClient
-      .update(dbSchema.users)
+      .update(dbSchema.usersTable)
       .set(input)
-      .where(eq(dbSchema.users.id, id))
+      .where(eq(dbSchema.usersTable.id, id))
       .returning();
   }
 }

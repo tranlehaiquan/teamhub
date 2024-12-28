@@ -15,6 +15,7 @@ const timestamps = {
 };
 
 export const rolesEnum = pgEnum("roles", ["user", "admin"]);
+export type UsersRole = (typeof rolesEnum.enumValues)[number];
 
 export const usersTable = pgTable("users", {
   id: uuid().primaryKey().defaultRandom().notNull(),

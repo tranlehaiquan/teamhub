@@ -2,7 +2,6 @@ import { pgTable, unique, uuid, varchar, timestamp, foreignKey, jsonb, pgEnum } 
 import { sql } from "drizzle-orm"
 
 export const roles = pgEnum("roles", ['user', 'admin'])
-export type UsersRole = (typeof roles.enumValues)[number];
 
 export const users = pgTable("users", {
 	id: uuid().defaultRandom().primaryKey().notNull(),
