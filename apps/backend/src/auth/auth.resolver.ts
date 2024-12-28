@@ -23,7 +23,6 @@ export class AuthResolver {
   @Query(() => UserAuth)
   @UseGuards(AuthGuard)
   whoAmI(@CurrentUser() user) {
-    console.log('user', user);
     return this.authService.getUserById(user.id);
   }
 }

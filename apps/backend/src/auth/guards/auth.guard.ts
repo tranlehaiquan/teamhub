@@ -1,8 +1,8 @@
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { IS_AUTH_OPTIONAL } from '../decorators/user.decorator';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import { JwtService } from '@nestjs/jwt';
+import { IS_AUTH_OPTIONAL } from '../constants';
 
 @Injectable()
 export class AuthGuard implements CanActivate {

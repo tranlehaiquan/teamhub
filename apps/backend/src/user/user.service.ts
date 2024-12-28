@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { DrizzleService, dbSchema } from '@workspace/drizzle-module';
 import { CreateUserInput } from './dto/create-user';
 import { eq } from 'drizzle-orm';
+import { UpdateUserInput } from './dto/update-user';
 
 @Injectable()
 export class UserService {
@@ -27,5 +28,13 @@ export class UserService {
       .select()
       .from(dbSchema.users)
       .where(eq(dbSchema.users.id, id));
+  }
+
+  async updateUserById(id: string, input: UpdateUserInput) {
+    return await this.drizzle.drizzleClient
+      .update(dbSchema.users)
+      .set(input)
+      .where(eq(dbSchema.users.id, id))
+      .returning();
   }
 }
