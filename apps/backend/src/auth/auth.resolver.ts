@@ -1,6 +1,7 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { AuthService } from './auth.service';
-import { AuthToken, UserAuth } from './entities/auth.entity';
+import { AuthToken } from './entities/auth.entity';
+import { Users } from '../user/entities/User.entity';
 import { CreateAuthInput, UserSignIn } from './dto/create-auth.input';
 import { AuthIsPublic, CurrentUser } from './decorators/user.decorator';
 import { Roles } from './decorators/roles.decorator';
@@ -10,7 +11,7 @@ export class AuthResolver {
   constructor(private readonly authService: AuthService) {}
 
   @AuthIsPublic()
-  @Mutation(() => UserAuth)
+  @Mutation(() => Users)
   signUp(@Args('createAuthInput') createAuthInput: CreateAuthInput) {
     return this.authService.register(createAuthInput);
   }
@@ -21,16 +22,8 @@ export class AuthResolver {
     return this.authService.login(userSignIn);
   }
 
-  @Query(() => UserAuth)
+  @Query(() => Users)
   whoAmI(@CurrentUser() user) {
     return this.authService.getUserById(user.id);
-  }
-
-  @Roles('admin')
-  @Query(() => UserAuth)
-  onlyAdmin() {
-    return {
-      id: 'admin only',
-    };
   }
 }

@@ -2,7 +2,12 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type UserAuth {
+type AuthToken {
+  """JWT token"""
+  token: String!
+}
+
+type Users {
   """User id"""
   id: String!
 
@@ -16,19 +21,15 @@ type UserAuth {
   role: String!
 }
 
-type AuthToken {
-  """JWT token"""
-  token: String!
-}
-
 type Query {
-  whoAmI: UserAuth!
-  onlyAdmin: UserAuth!
+  whoAmI: Users!
+  users: [Users!]!
 }
 
 type Mutation {
-  signUp(createAuthInput: CreateAuthInput!): UserAuth!
+  signUp(createAuthInput: CreateAuthInput!): Users!
   signIn(userSignIn: UserSignIn!): AuthToken!
+  updateUser(updateUserInput: UpdateUserInput!): Users!
 }
 
 input CreateAuthInput {
@@ -48,4 +49,12 @@ input UserSignIn {
 
   """User password"""
   password: String!
+}
+
+input UpdateUserInput {
+  """User name"""
+  password: String
+
+  """User email"""
+  role: String
 }
