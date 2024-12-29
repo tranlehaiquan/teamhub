@@ -1,6 +1,6 @@
-import { DynamicModule, Module } from '@nestjs/common';
-import { DrizzleService } from './drizzle-db.service';
-import { DRIZZLE_DB_OPTIONS, DrizzleDbOptions } from './drizzle-db.constants';
+import { DynamicModule, Module } from "@nestjs/common";
+import { DrizzleService } from "./drizzle-db.service";
+import { DRIZZLE_DB_OPTIONS, DrizzleDbOptions } from "./drizzle-db.constants";
 
 @Module({
   providers: [DrizzleService],

@@ -27,8 +27,29 @@ Your `tailwind.config.ts` and `globals.css` are already set up to use the compon
 To use the components in your app, import them from the `ui` package.
 
 ```tsx
-import { Button } from "@workspace/ui/components/ui/button"
+import { Button } from "@workspace/ui/components/ui/button";
 ```
+
+## Todo
+
+### Back End
+
+- [ ] Add validation for graphql
+- [ ] Add refresh token
+- [ ] Add logout mutation
+- [ ] Add user profile query and mutation
+- [ ] Add user forgot password mutation
+- [ ] Add user update password mutation (with token, after login)
+- [ ] Caching?
+- [ ] Microservices
+- [ ] Docker for all services
+- [ ] CICD for all services
+- [ ] Service file upload
+
+### Front End
+
+- [ ] FE and BE integration, graphql code generation
+
 
 ## Flows
 
@@ -37,7 +58,7 @@ sequenceDiagram
     participant A as User
     participant B as Next.js
     participant C as Nest.js
-    
+
     A->>B: Submit form register
     B->>C: Call graphql signUp mutation
     C->>B: Return user data registered

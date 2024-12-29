@@ -23,13 +23,13 @@ type Users {
 
 type Query {
   whoAmI: Users!
-  users: [Users!]!
+  users(offset: Int = 0, limit: Int = 10): [Users!]!
 }
 
 type Mutation {
   signUp(createAuthInput: CreateAuthInput!): Users!
   signIn(userSignIn: UserSignIn!): AuthToken!
-  updateUser(updateUserInput: UpdateUserInput!): Users!
+  updateUserById(id: String!, updateUserInput: UpdateUserInput!): Users!
 }
 
 input CreateAuthInput {

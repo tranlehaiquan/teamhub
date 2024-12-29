@@ -1,10 +1,10 @@
-import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
+import { Inject, Injectable, OnModuleInit } from "@nestjs/common";
 import {
   drizzle,
   NodePgClient,
   NodePgDatabase,
-} from 'drizzle-orm/node-postgres';
-import { DRIZZLE_DB_OPTIONS, DrizzleDbOptions } from './drizzle-db.constants';
+} from "drizzle-orm/node-postgres";
+import { DRIZZLE_DB_OPTIONS, DrizzleDbOptions } from "./drizzle-db.constants";
 
 @Injectable()
 export class DrizzleService implements OnModuleInit {
