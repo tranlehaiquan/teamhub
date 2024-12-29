@@ -27,19 +27,19 @@ export const usersTable = pgTable("users", {
 });
 
 export const usersRelations = relations(usersTable, ({ one }) => ({
-  profileInfo: one(profileInfo),
+  profileInfo: one(profileInfoTable),
 }));
 
-export const profileInfo = pgTable("user_profiles", {
+export const profileInfoTable = pgTable("user_profiles", {
   id: uuid().primaryKey().defaultRandom().notNull(),
   userId: uuid("user_id").references(() => usersTable.id),
   metadata: jsonb("metadata"),
   ...timestamps,
 });
 
-export const profileInfoRelations = relations(profileInfo, ({ one }) => ({
+export const profileInfoRelations = relations(profileInfoTable, ({ one }) => ({
   user: one(usersTable, {
-    fields: [profileInfo.userId],
+    fields: [profileInfoTable.userId],
     references: [usersTable.id],
   }),
 }));

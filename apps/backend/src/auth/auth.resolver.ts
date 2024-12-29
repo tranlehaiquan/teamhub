@@ -4,7 +4,6 @@ import { AuthToken } from './entities/auth.entity';
 import { Users } from '../user/entities/User.entity';
 import { CreateAuthInput, UserSignIn } from './dto/create-auth.input';
 import { AuthIsPublic, CurrentUser } from './decorators/user.decorator';
-import { Roles } from './decorators/roles.decorator';
 
 @Resolver('Auth')
 export class AuthResolver {

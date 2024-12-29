@@ -22,11 +22,12 @@ export class AuthService {
     }
 
     const hashedPassword = await hash(createAuthInput.password);
-    const results = await this.UserService.createUser({
+    const results = await this.UserService.createUserWithProfile({
       ...createAuthInput,
       password: hashedPassword,
     });
-    const user = results[0];
+
+    const user = results.user;
 
     return {
       id: user.id,

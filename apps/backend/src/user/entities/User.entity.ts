@@ -1,4 +1,5 @@
 import { ObjectType, Field } from '@nestjs/graphql';
+import { Profile } from 'src/profile/entities/profile.entity';
 
 @ObjectType()
 export class Users {
@@ -13,4 +14,7 @@ export class Users {
 
   @Field(() => String, { description: 'User role' })
   role: string;
+
+  @Field(() => Profile, { description: 'User profile' })
+  profile: Profile;
 }

@@ -8,7 +8,6 @@ import { join } from 'path';
 import { UserModule } from './user/user.module';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -24,6 +23,5 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
     UserModule,
   ],
   controllers: [AppController],
-  providers: [],
 })
 export class AppModule {}

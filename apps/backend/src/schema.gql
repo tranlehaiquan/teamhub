@@ -7,6 +7,14 @@ type AuthToken {
   token: String!
 }
 
+type Profile {
+  """User id"""
+  id: String!
+
+  """User metadata"""
+  metadata: String!
+}
+
 type Users {
   """User id"""
   id: String!
@@ -19,6 +27,9 @@ type Users {
 
   """User role"""
   role: String!
+
+  """User profile"""
+  profile: Profile!
 }
 
 type Query {

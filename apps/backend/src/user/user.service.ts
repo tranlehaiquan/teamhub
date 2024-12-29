@@ -16,6 +16,28 @@ export class UserService {
       .returning();
   }
 
+  createUserWithProfile(input: CreateUserInput) {
+    return this.drizzle.drizzleClient.transaction(async (trx) => {
+      const user = await trx
+        .insert(dbSchema.usersTable)
+        .values(input)
+        .returning();
+
+      const profile = await trx
+        .insert(dbSchema.profileInfoTable)
+        .values({
+          userId: user[0].id,
+          metadata: {},
+        })
+        .returning();
+
+      return {
+        user: omit(first(user), ['password']),
+        profile: first(profile),
+      };
+    });
+  }
+
   async findUserByEmail(email: string) {
     return await this.drizzle.drizzleClient
       .select()

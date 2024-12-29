@@ -8,6 +8,7 @@ import { UserModule } from 'src/user/user.module';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './guards/auth.guard';
 import { RolesGuard } from './guards/roles/roles.guard';
+import { ProfileModule } from 'src/profile/profile.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { RolesGuard } from './guards/roles/roles.guard';
       databaseURL: process.env.DATABASE_URL,
     }),
     UserModule,
+    ProfileModule,
   ],
   providers: [
     AuthResolver,
