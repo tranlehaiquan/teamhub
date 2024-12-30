@@ -10,7 +10,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "dev": "pnpm build --watch",
-    "build": "tsc -b -v",
+    "build": "tsc -b",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\""
   },
   "keywords": [],

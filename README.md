@@ -34,22 +34,31 @@ import { Button } from "@workspace/ui/components/ui/button";
 
 ### Back End
 
-- [ ] Add validation for graphql
+#### Authentication
 - [ ] Add refresh token
 - [ ] Add logout mutation
-- [ ] Add user profile query and mutation
 - [ ] Add user forgot password mutation
 - [ ] Add user update password mutation (with token, after login)
+
+#### Rest
+- [ ] Add validation for graphql
+- [x] Add user profile query and mutation
 - [ ] Caching?
 - [ ] Microservices
-- [ ] Docker for all services
-- [ ] CICD for all services
 - [ ] Service file upload
 
 ### Front End
 
 - [ ] FE and BE integration, graphql code generation
+- [ ] Login page + flow auth (JWT)
+- [ ] Register page
 
+### Admin Panel
+
+### Common
+
+- [ ] Docker for all services
+- [ ] CICD for all services
 
 ## Flows
 
